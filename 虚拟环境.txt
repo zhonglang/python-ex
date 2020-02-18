@@ -1,0 +1,25 @@
+一、通过virtualenv创建虚拟环境
+1、创建U虚拟环境virtualenv env
+2、进入虚拟环境 	cd env
+				source ./bin/activate
+3、退出虚拟环境deactivate
+
+二、通过virtualenvwrapper创建虚拟化环境
+1、pip install virtualenvwrapper #前提要先安装virtualenv
+2、在~/.bashrc文件中添加如下内容：
+export INSTALL_PATH=/data/bkce
+export WORKON_HOME=$INSTALL_PATH/.envs  #虚拟环境的存放目录
+source $(which virtualenvwrapper.sh) #virtrualenvwrapper会安装到python的bin目录下，所以该路径是python安装目录下bin/virtualenvwrapper.sh
+
+3、source ~/.bashrc　　　　#读入配置文件，立即生效
+4、创建虚拟环境mkvirtualenv venv
+5、列出所有的虚拟环境workon
+6、切换到虚拟环境/进入虚拟环境workon venv
+7、退出虚拟环境deactivate
+8、删除虚拟环境rmvirtualenv venv
+
+pip install --no-index --find-links=$PKG_SRC_PATH/open_paas/support-files/pkgs -r requirements.txt #通过命令安装已经存在的pip包
+
+
+grep -wEo '__[0-9A-Z_]+__' $PKG_SRC_PATH/open_paas/supportfiles/templates/paas#conf#settings_production.py.tpl |sort -u
+
