@@ -5,6 +5,8 @@ from multiprocessing import Process
 from multiprocessing import Pool
 from multiprocessing import Queue
 from multiprocessing import Manager
+
+
 # 进程之间数据不共享
 # ret = os.fork() #创建一个子进程，父进程的ret=子进程的pid，创建出来的子进程ret=0，os.getpid() os.getppid()
 # g_num = 100
@@ -37,6 +39,7 @@ from multiprocessing import Manager
 # 子进程要执行的代码
 def run_proc(name):
     print('Run child process %s (%s)...' % (name, os.getpid()))
+
 
 # if __name__=='__main__':
 #     print('Parent process %s.' % os.getpid())
@@ -80,15 +83,15 @@ def run_proc(name):
 #
 #     pool.close() #关闭进程池，不能够再向进程池添加任务
 #     pool.join()  #等待进程池中的进程执行完毕后主进程才结束，默认情况主进程执行完毕后直接结束（会导致子进程没有执行完毕，整个程序就退出了），
-                 # 不会等待子进程执行完毕
+# 不会等待子进程执行完毕
 
 
-#进程间通信-Queue，先进先出,适用于process创建出来的进程通讯
+# 进程间通信-Queue，先进先出,适用于process创建出来的进程通讯
 # q = Queue(3)
 # q.put('hh-1') #往队列添加数据
 # q.put('hh-2')
 # q.put('hh-3')
-#q.put_nowait() #队列满的情况，会报异常，而不会等待
+# q.put_nowait() #队列满的情况，会报异常，而不会等待
 # print q.qsize()  #队列中数据的数量
 # print q.empty()
 # print q.get()
@@ -124,7 +127,6 @@ def run_proc(name):
 #     # print q.qsize()
 #     # pr.join()
 #     print '执行完成'
-
 
 
 # 多进程拷贝文件
@@ -169,3 +171,14 @@ def run_proc(name):
 #
 # if __name__=='__main__':
 #     main()
+
+import threading, multiprocessing
+
+def loop():
+    x = 0
+    while True:
+        x = x ^ 1
+
+for i in range(multiprocessing.cpu_count()):
+    t = threading.Thread(target=loop)
+    t.start()
