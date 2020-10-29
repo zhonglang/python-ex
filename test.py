@@ -56,7 +56,6 @@ msg='\u66f4\u65b0\u6210\u529f'
 name=u'朱忠浪'
 msg='\u66f4\u65b0\u6210\u529f'
 name=u'朱忠浪'
-msg='\u66f4\u65b0\u6210\u529f'
-name=u'朱忠浪'
+
 
 
