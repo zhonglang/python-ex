@@ -2,6 +2,8 @@
 # 装饰器函数其实是这样一个接口约束，它必须接受一个callable对象作为参数，然后返回一个callable对象；
 # 在Python中一般callable对象都是函数，但也有例外。只要某个对象重载了__call__()方法，那么这个对象就是callable的。
 # def w1(func):
+#     print '不用调用函数就能执行'
+#
 #     def inner():
 #         print('------验证代码区--------')
 #         func()
@@ -17,9 +19,6 @@
 #     print('-------f2--------')
 
 
-# infun = w1(f1)
-# infun()
-
 # f1 = w1(f1)
 # f1()
 
@@ -27,10 +26,12 @@
 # 类型一、不含参数的普通装饰器
 
 def w1(func):
-    print('----不含参数的普通装饰器------')
+    # print('----不含参数的普通装饰器------')
 
     def inner():
+        print '执行前需要加的内容'
         func()
+        print '执行后需要加的内容'
 
     return inner
 
@@ -40,22 +41,25 @@ def f1():
     print('-------f1--------')
 
 
+# f1()
+
 # 类型一、含参数的普通装饰器
-def w2(func):
-    print('----含参数的普通装饰器------')
-
-    def inner(*args, **kwargs):
-        func(*args, **kwargs)
-
-    return inner
-
-
-@w2
-def say(msg):
-    print "say {}!".format(msg)
-
-
-say('world')
+# def w2(func):
+#     print('----含参数的普通装饰器------')
+#
+#     def inner(*args, **kwargs):
+#         print args
+#         func(*args, **kwargs)
+#
+#     return inner
+#
+#
+# @w2
+# def say(msg):
+#     print "say {}!".format(msg)
+#
+#
+# say('world')
 
 
 # 带参数装饰器
